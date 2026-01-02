@@ -1,5 +1,5 @@
 import { DomainEvent } from '@/domain/shared/base/DomainEvent';
-import { StoreId } from '@/domain/tenant/store/value-objects/StoreId';
+import { StoreId } from '@/domain/tenant/value-objects/StoreId';
 
 /**
  * StoreCreatedEvent
@@ -13,6 +13,5 @@ export class StoreCreatedEvent implements DomainEvent {
   constructor(
     public readonly storeId: StoreId,
     public readonly occurredAt: Date = new Date(),
-  ) {
-  }
+  ) {}
 }

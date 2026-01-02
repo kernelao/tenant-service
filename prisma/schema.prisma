@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum StoreStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+model Store {
+  id        String      @id
+  storeId   String      @unique
+  domain    String      @unique
+  name      String?
+  status    StoreStatus @default(ACTIVE)
+
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model AuditLog {
+  id            String   @id
+  actorId       String
+  action        String
+  storeId       String?
+  targetType    String?
+  targetId      String?
+  correlationId String
+  ipHash        String?
+  userAgentHash String?
+  createdAt     DateTime @default(now())
+}
+
+model IdempotencyKey {
+  key       String @id
+  response  Json
+  createdAt DateTime @default(now())
+}

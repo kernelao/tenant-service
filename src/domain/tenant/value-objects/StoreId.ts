@@ -1,5 +1,5 @@
 import { ValueObject } from '@/domain/shared/base/ValueObject';
-import { InvalidStoreIdError } from '@/domain/tenant/store/errors/InvalidStoreIdError';
+import { InvalidStoreIdError } from '@/domain/tenant/errors/InvalidStoreIdError';
 
 type StoreIdProps = { value: string };
 

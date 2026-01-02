@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: tenant-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tenant
+    ports:
+      - "5433:5432"
+    volumes:
+      - tenant_pgdata:/var/lib/postgresql/data
+
+volumes:
+  tenant_pgdata:
